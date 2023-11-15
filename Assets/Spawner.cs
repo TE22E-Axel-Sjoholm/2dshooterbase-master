@@ -15,19 +15,19 @@ public class Spawner : MonoBehaviour
     float timeBetweenFiende = 1.5f;
     float timeSinceLastFiende = 0;
     Boolean BossSpawned;
-    int Enemyspawned;
+    int Enemyspawnedsinceboss;
     void Update()
     {
             timeSinceLastFiende += Time.deltaTime;
             if(timeSinceLastFiende > timeBetweenFiende){
                 Instantiate(fiendePrefab);
                 timeSinceLastFiende = 0;
-                Enemyspawned += 1;
+                Enemyspawnedsinceboss += 1;
             }
-            if(Enemyspawned >= 5){
+            if(Enemyspawnedsinceboss >= 5){
                 Instantiate(bossPrefab);
                 BossSpawned = true;
-                Enemyspawned = 0;
+                Enemyspawnedsinceboss = 0;
             }
             if(BossSpawned){
                 timeSinceLastFiende = 0;
