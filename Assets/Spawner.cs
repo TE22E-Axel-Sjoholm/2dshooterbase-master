@@ -8,17 +8,26 @@ public class Spawner : MonoBehaviour
 
     [SerializeField]
     GameObject fiendePrefab;
+    [SerializeField]
+    GameObject bossPrefab;
 
     [SerializeField]
     float timeBetweenFiende = 1.5f;
     float timeSinceLastFiende = 0;
-    Boolean BossSpawned = false;
+    Boolean BossSpawned;
+    int Enemyspawned;
     void Update()
     {
             timeSinceLastFiende += Time.deltaTime;
             if(timeSinceLastFiende > timeBetweenFiende){
-            Instantiate(fiendePrefab);
+                Instantiate(fiendePrefab);
                 timeSinceLastFiende = 0;
+                Enemyspawned += 1;
+            }
+            if(Enemyspawned >= 5){
+                Instantiate(bossPrefab);
+                BossSpawned = true;
+                Enemyspawned = 0;
             }
             if(BossSpawned){
                 timeSinceLastFiende = 0;

@@ -22,7 +22,6 @@ public class fiende : MonoBehaviour
         {
             Destroy(this.gameObject);
             player.GetComponent<ship>().Hurt(1);
-            
         }
     }
     void OnTriggerEnter2D(Collider2D other)
